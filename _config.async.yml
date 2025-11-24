@@ -94,6 +94,8 @@ top_bars: # <object[]> {{"title:标题":"","url:地址":"","noswup:不使用 Pja
     url: /
   - title: 文章
     url: /archives/
+#  - title: 评论
+#    url: /comment/
   - title: 友链
     url: /links/
   - title: 关于
@@ -107,12 +109,14 @@ banner:
     enable: false # enable | 启用
     el: .trm-banner # el | 弹幕容器
   default: # 默认横幅配置
-    type: img # 横幅类型 <[img,slideshow,video]>
-    bgurl: /img/banner.png # 背景图地址
+    type: video # 横幅类型 <[img,slideshow,video]>
+    bgurl: /banner4index1.mp4 # 背景图地址
     banner_text: Hi my new friend! # 横幅描述
     position: top # 同 CSS object-position
     fit: cover # 同 CSS object-fit
   index: ## 首页横幅
+    type: video # 横幅类型 <[img,slideshow,video]>
+    bgurl: /banner4index1.mp4 # 背景图地址
     banner_title: 树深时见鹿，<br>溪午不闻钟。
     banner_text: Hi my new friend!
     video_url: # 视频地址
@@ -122,9 +126,9 @@ banner:
   links: ## 友链页横幅
     banner_title: 莫愁前路无知己，<br>天下谁人不识君。
     banner_text: A link to a friend's website
-  comment: ## 评论页横幅
-    banner_title: 醉后不知天在水，<br>满船清梦压星河。
-    banner_text: The magic tree hole
+#  comment: ## 评论页横幅
+#    banner_title: 醉后不知天在水，<br>满船清梦压星河。
+#    banner_text: The magic tree hole
   about: ## 关于页横幅
     banner_title: 醉后不知天在水，<br>满船清梦压星河。
     banner_text: About me
@@ -150,6 +154,9 @@ sidebar:
     - name: weibo
       icon: fab fa-weibo
       url: https://weibo.com/
+    - name: bilibili
+      icon: fab fa-youtube
+      url: https://youtube.com/
 
 ## About page settings | 关于页
 about:
@@ -252,8 +259,8 @@ comment:
     enable: false
     env: # 腾讯云环境id
   twikoo:
-    enable: false
-    envId: # 腾讯云环境id
+    enable: true
+    envId: http://xiaodongblog.dpdns.org/ # 腾讯云环境id
   # region: # 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
   # option: # 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
   giscus:
