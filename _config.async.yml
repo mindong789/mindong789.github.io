@@ -17,7 +17,7 @@ open_graph: true # 启用
 user:
   name: 小东 # Nickname | 昵称
   first_name: 的博客 # 名
-  last_name: 小 东 # 姓
+  last_name: 小东 # 姓
   email: 502774020@qq.com
   domain: https://mindong789.github.io/ # Domain | 站点域名
   avatar: /img/avatar.jpg # Avatar | 站点头像
@@ -33,12 +33,12 @@ links_info:
 
 # Site logo | 网站图标
 favicon:
-  logo: favicon1.png # logo | 顶部 logo
-  icon16: favicon1.png # icon 16*16
-  icon32: favicon1.png # icon 32*32
+  logo: logo.png # logo | 顶部 logo
+  icon16: 站标.webp # icon 16*16
+  icon32: 站标.webp # icon 32*32
   apple_touch_icon: # Apple touch icon | iOS 添加到桌面时显示图标
   webmanifest: # Webmanifest | 应用程序清单文件
-  visibilitychange: false # Enable toggle title display when leaving | 开启离开时切换标题显示
+  visibilitychange: true # Enable toggle title display when leaving | 开启离开时切换标题显示
   hidden: /failure.ico # Displays an icon when not visible | 离开窗口时显示图标
   show_text: favicon.show_text # Displays text when the window is activated | 激活窗口时显示文字
   hide_text: favicon.hide_text # Leave the window to display text | 离开窗口显示文字
