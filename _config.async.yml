@@ -8,7 +8,6 @@
 # 4. 需要跳过当前属性, 只需要在注释上 添加两个 ## 
 # 5. 字段默认没值时, 则必须在后面添加 备注信息
 
-
 # Open Graph protocol | OG 协议
 open_graph: true # 启用
 
