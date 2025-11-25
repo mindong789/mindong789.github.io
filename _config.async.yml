@@ -107,6 +107,9 @@ banner:
   danmu: # danmu | 弹幕
     enable: false # enable | 启用
     el: .trm-banner # el | 弹幕容器
+    avatar: false  # 显示弹幕发送者头像（如果数据里有 avatar 字段）
+    delayRange: 5000  #延时范围时间，默认 5000 ms
+    speed: 80   #弹幕每秒滚动距离，默认每秒滚动 20px
   default: # 默认横幅配置
     type: video # 横幅类型 <[img,slideshow,video]>
     bgurl: https://cdn.moji.com/websrc/video/video621.mp4 # 背景图地址
