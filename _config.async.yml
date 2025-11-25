@@ -12,7 +12,6 @@
 # Open Graph protocol | OG 协议
 open_graph: true # 启用
 
-
 # User info | 用户信息
 user:
   name: 小东 # Nickname | 昵称
