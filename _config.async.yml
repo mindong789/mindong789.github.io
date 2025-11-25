@@ -279,7 +279,7 @@ comment:
 # Theme mode | 主题模式
 theme:
   switch: true # 主题切换按钮
-  default: style-dark # 主题默认模式 <[style-light,style-dark,auto]>
+  default: auto # 主题默认模式 <[style-light,style-dark,auto]>
 
 # Service Worker | 渐进式应用
 sw: false # 启用
