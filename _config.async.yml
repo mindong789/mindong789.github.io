@@ -17,7 +17,7 @@ open_graph: true # 启用
 user:
   name: 小东 # Nickname | 昵称
   first_name: 的博客 # 名
-  last_name: 小东 # 姓
+  last_name: # 小东 # 姓
   email: 502774020@qq.com
   domain: https://mindong789.github.io/ # Domain | 站点域名
   avatar: /img/avatar.jpg # Avatar | 站点头像
@@ -33,9 +33,9 @@ links_info:
 
 # Site logo | 网站图标
 favicon:
-  logo: logo.png # logo | 顶部 logo
-  icon16: 站标.webp # icon 16*16
-  icon32: 站标.webp # icon 32*32
+  logo:  https://counter.imalun.com/www.imalun.com?theme=rule34 # logo | 顶部 logo
+  icon16: 站标1.webp # icon 16*16
+  icon32: 站标1.webp # icon 32*32
   apple_touch_icon: # Apple touch icon | iOS 添加到桌面时显示图标
   webmanifest: # Webmanifest | 应用程序清单文件
   visibilitychange: true # Enable toggle title display when leaving | 开启离开时切换标题显示
@@ -110,13 +110,13 @@ banner:
     el: .trm-banner # el | 弹幕容器
   default: # 默认横幅配置
     type: video # 横幅类型 <[img,slideshow,video]>
-    bgurl: /banner4index1.mp4 # 背景图地址
+    bgurl: https://cdn.moji.com/websrc/video/video621.mp4 # 背景图地址
     banner_text: Hi my new friend! # 横幅描述
     position: top # 同 CSS object-position
     fit: cover # 同 CSS object-fit
   index: ## 首页横幅
-    type: video # 横幅类型 <[img,slideshow,video]>
-    bgurl: /banner4index1.mp4 # 背景图地址
+#    type: video # 横幅类型 <[img,slideshow,video]>
+#    bgurl: /banner4index1.mp4 # 背景图地址
     banner_title: 树深时见鹿，<br>溪午不闻钟。
     banner_text: Hi my new friend!
     video_url: # 视频地址
@@ -260,7 +260,7 @@ comment:
     env: # 腾讯云环境id
   twikoo:
     enable: true
-    envId: http://xiaodongblog.dpdns.org/ # 腾讯云环境id
+    envId: http://twikoo.xiaodongblog.xyz/ # 腾讯云环境id
   # region: # 环境地域，默认为 ap-shanghai，如果您的环境地域不是上海，需传此参数
   # option: # 用于区分不同文章的自定义 js 路径，如果您的文章路径不是 location.pathname，需传此参数
   giscus:
