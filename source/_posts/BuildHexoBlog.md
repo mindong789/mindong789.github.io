@@ -31,7 +31,7 @@ Hexo 是一款快速、简洁且高效的静态博客框架，基于 Node.js 构
 hexo 依赖Node.js 和 Git 两个工具，需要提前安装：
 
 1. 安装 Node.js
-```
+```js
 # 安装
 brew install node # 安装 Node.js
 npm install -g npm   # 更新 npm 自身 (Node.js 的包管理工具)
@@ -42,7 +42,7 @@ npm -v
 ```
 2. 安装 Git
 
-```
+```js
 # 安装
 brew install git
 
@@ -51,26 +51,26 @@ git --version
 ```
 3. 安装 Hexo CLI
 
-```
+```js
 npm install -g hexo-cli
 ```
 #### 本地搭建
 1. 初始化博客项目
 
-```
+```js
 hexo init my-blog # ”my-blog“ 自己的博客目录名称
 cd my-blog
 npm install
 ```
 2. 生成一篇博客
-```
+```js
 hexo new "我的第一篇博客"
 ```
 文章默认保存在 source/_posts/ 目录下，格式为 Markdown（.md）。
 
 3. 编辑文章内容
 
-```
+```js
 ---
 title: 我的第一篇博客
 date: 2025-11-21 11:40:00
@@ -82,7 +82,7 @@ categories: 技术
 ```
 4. 本地预览
 
-```
+```js
 hexo server
 ```
 然后在浏览器访问：http://localhost:4000
@@ -91,12 +91,11 @@ hexo server
 5. 更换主题（可选）
 
 Hexo 默认主题比较简单，可以更换为其他美观的主题。
-    
+
 主题列表：[Hexo主题](https://hexo.io/themes/)
     
-**安装主题**
-    
-```
+```js
+# 安装主题
 # 在自己选定的主题的 git 中按照教程安装
 # 本文以 hexo-theme-async 主题作为案例。
 # https://github.com/MaLuns/hexo-theme-async
@@ -108,13 +107,14 @@ npm install hexo-theme-async@latest
 ```
 然后修改 `_config.yml`（站点配置文件）中的 `theme` 字段：
 
-```
+```js
 theme: async
 ```
-6.美化站点
+
+6. 美化站点
 
 按照主题介绍文档进行配置
-```
+```js
 hexo server
 ```
 启动站点，查看是否符合预期
@@ -130,26 +130,26 @@ GitHub 是全球最大的基于 Git 的代码托管与开发者协作平台，�
 
 #### 安装插件
 
-```
+```js
 npm install hexo-deployer-git --save
 ```
 #### 配置 git 信息
 
 配置 `_config.yml` 中的 `deploy` 部分：
 
-```
+```js
 deploy:
   type: git
   repo: https://github.com/<username>/<username>.github.io.git
   branch: main
 ```
 #### 生成静态文件&构建
-```
+```js
 hexo clean && hexo generate && hexo deploy
 ```
 这里有可能会 `deploy` 失败，因为高版本的 `git` 不支持输入密码。此时需要再 `Github` 上生成一个可写入的 `token` 并使用 `git` 命令指向该仓库。
 
-```
+```js
 git init
 git remote add origin https://github.com/<username>/<username>.github.io.git
 git add .
@@ -214,12 +214,12 @@ git push origin main
 
 本文中大多数知识咨询 AI 即可获取，如果没有学习过前端知识的话，大多数困难都集中在主题的配置，尽量阅读介绍文档，里面包含大多数答案。
 
-通过本教程，你已掌握 Hexo + GitHub Pages + Cloudflare 的完整搭建链路。关键点总结：
-1. Hexo 负责内容生成 → GitHub 仓库托管 → Cloudflare 全球加速
-2. 无需服务器，全程免费，访问速度远超 GitHub Pages
-3. 未来更新只需 git push，Cloudflare 自动部署
+> 通过本文，您已掌握 Hexo + GitHub Pages + Cloudflare 的完整搭建链路。关键点总结：
+> 1. Hexo 负责内容生成 → GitHub 仓库托管 → Cloudflare 全球加速
+> 2. 无需服务器，全程免费，访问速度远超 GitHub Pages
+> 3. 未来更新只需 git push，Cloudflare 自动部署
 
-<div style="background:rgb(245, 247, 250); padding: 10px; border-left: 3px solid rgb(136, 207, 237); border-radius: 4px;">
+<div style="background:rgb(245, 247, 250); padding: 10px; border-left: 3px solid rgb(136, 207, 237); border-radius: 4px; font-size: 15px;">
 <span style="font-weight: bold;">本文作者：</span>小东<br>
 <span style="font-weight: bold;">博客链接：</span><a href="https://blog.xiaodongblog.xyz/" style="color:rgba(204, 0, 160, 0.48); text-decoration: none;">https://blog.xiaodongblog.xyz/</a><br>
 <span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均默认采用 <span style="color: rgba(204, 0, 160, 0.48);">CC BY-NC-SA 4.0</span> 许可协议。
