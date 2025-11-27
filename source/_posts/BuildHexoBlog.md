@@ -16,9 +16,9 @@ categories: 技术
 > **注：本文是 mac 环境的教程，其他环境可以借鉴，无法照抄**
 
 # 前提
-本篇文章主要分为hexo、github、cloudflare三个部分，大概的内容就是介绍组件和如何使用，如果按照本文的步骤操作遇到错误时，肯定是环境问题导致的，可以咨询chat来解决。
+本篇文章主要分为 `hexo` 、`github` 、`cloudflare` 三个部分，大概的内容就是介绍组件和如何使用，如果按照本文的步骤操作遇到错误时，肯定是环境问题导致的，可以咨询 `AI` 来解决。
 
-推荐chat：<span style="color:rgba(236, 184, 132, 0.92)">[豆包](https://www.doubao.com/chat/)</span> <span style="color:rgba(68, 222, 119, 0.93)">[千问](https://www.qianwen.com/)</span>
+推荐 `AI` ：<span style="color:rgba(236, 184, 132, 0.92)">[豆包](https://www.doubao.com/chat/)</span> <span style="color:rgba(68, 222, 119, 0.93)">[千问](https://www.qianwen.com/)</span>
 
 ---
 <span style="color:#9370db; font-size:1.2em; font-style:italic;">接下来开始建站旅程吧！</span>
@@ -207,7 +207,7 @@ git push origin main
 > 接下来就可以观赏自己的站点了，链接为 <项目名>.pages.dev 。请自己进行尝试吧~
 
 #### 自定义域名
-需要自己购买域名并托管到 `Cloudflare` 上，进行关联，咨询 `chat` 即可，比较简答。在本文就不进行介绍了~
+需要自己购买域名并托管到 `Cloudflare` 上，进行关联，咨询 `AI` 即可，比较简答。在本文就不进行介绍了~
 
 # 结束语
 嘿嘿~，还是比较开心的，毕竟是第二篇自己写的博客，虽然不说写的有多好，但还是耗费了一些心血的。希望可以帮助大家建立起属于自己的博客！
