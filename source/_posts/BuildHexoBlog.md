@@ -2,7 +2,7 @@
 title: 如何搭建一个静态站
 date: 2025-11-27 10:02:34
 cover: [https://copyright.bdstatic.com/vcg/creative/1bb2ffd939ee16571df6506cf29693e4.jpg]
-sticky: 10
+sticky: 0
 banner:
   type: img
   bgurl: https://t7.baidu.com/it/u=2507897800,3826496196&fm=193
