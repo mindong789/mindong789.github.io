@@ -104,8 +104,8 @@ top_bars: # <object[]> {{"title:标题":"","url:地址":"","noswup:不使用 Pja
 banner:
   use_cover: false # Use the cover image for article details | 文章详情使用封面图
   danmu: # danmu | 弹幕
-    enable: false # enable | 启用
-    el: .trm-banner # el | 弹幕容器
+    enable: true # enable | 启用
+    # el: .trm-banner # el | 弹幕容器
     avatar: false  # 显示弹幕发送者头像（如果数据里有 avatar 字段）
     delayRange: 5000  #延时范围时间，默认 5000 ms
     speed: 80   #弹幕每秒滚动距离，默认每秒滚动 20px
