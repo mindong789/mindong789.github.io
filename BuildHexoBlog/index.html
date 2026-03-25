@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="这篇文章主要介绍如何来搭建一个属于自己的静态站。  注：本文是 mac 环境的教程，其他环境可以借鉴，无法照抄  前提本篇文章主要分为 hexo 、github 、cloudflare 三个部分，大概的内容就是介绍组件和如何使用，如果按照本文的步骤操作遇到错误时，肯定是环境问题导致的，可以咨询 AI 来解决。 推荐 AI ：豆包 千问  接下来开始建站旅程吧！  HexoHexo 是一款快速、简洁">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何搭建一个静态站">
+<meta property="og:url" content="http://example.com/BuildHexoBlog/index.html">
+<meta property="og:site_name" content="关于我 - 小东">
+<meta property="og:description" content="这篇文章主要介绍如何来搭建一个属于自己的静态站。  注：本文是 mac 环境的教程，其他环境可以借鉴，无法照抄  前提本篇文章主要分为 hexo 、github 、cloudflare 三个部分，大概的内容就是介绍组件和如何使用，如果按照本文的步骤操作遇到错误时，肯定是环境问题导致的，可以咨询 AI 来解决。 推荐 AI ：豆包 千问  接下来开始建站旅程吧！  HexoHexo 是一款快速、简洁">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-11-27T02:02:34.000Z">
+<meta property="article:modified_time" content="2026-01-06T08:10:18.753Z">
+<meta property="article:author" content="小东">
+<meta property="article:tag" content="Blog">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+
+<title >如何搭建一个静态站</title>
+
+<!-- Favicon -->
+
+    <link href='/%E7%AB%99%E6%A0%871.webp?v=2.2.6' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/%E7%AB%99%E6%A0%871.webp?v=2.2.6' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"example.com","author":"小东","root":"/","typed_text":["I`m a code lover.","随机记录一些生活中的点点滴滴","文笔不好，勿喷"],"theme_version":"2.2.6","theme":{"switch":true,"default":"auto"},"favicon":{"logo":"头像.jpg","icon16":"站标1.webp","icon32":"站标1.webp","apple_touch_icon":null,"webmanifest":null,"visibilitychange":true,"hidden":"/failure.ico","show_text":"(/≧▽≦/)咦！又好了！","hide_text":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"11/21/2025 00:00:00","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":true,"el":".trm-banner","avatar":false,"delayRange":5000,"speed":80}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2026-01-06 16:10:18"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/%E5%A4%B4%E5%83%8F.jpg">
+    
+    
+        <div class="trm-logo-text">
+            小东<span>的博客</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    文章
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/links/" target="">
+                    友链
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://t7.baidu.com/it/u=2507897800,3826496196&fm=193">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            Hi my new friend!
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            如何搭建一个静态站
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        BuildHexoBlog
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        小东
+    </h5>
+    
+        <div class="trm-label">
+            
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/mindong789/mindong789.github.io" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-github"></i>
+        </a>
+    
+        <a href="mailto:502774020@qq.com" title="Email" rel="nofollow" target="_blank">
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    
+        <a href="https://weibo.com/" title="weibo" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-weibo"></i>
+        </a>
+    
+        <a href="https://youtube.com/" title="bilibili" rel="nofollow" target="_blank">
+            <i class="iconfont fab fa-youtube"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                地址:
+            </div>
+            <div class="trm-label trm-label-light">
+                China
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                职业:
+            </div>
+            <div class="trm-label trm-label-light">
+                coder
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                兴趣:
+            </div>
+            <div class="trm-label trm-label-light">
+                lol, code
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:502774020@qq.com" class="trm-btn">
+            联系我
+            <i class="iconfont far fa-envelope"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            11/27
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            10:02
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            小东
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p>这篇文章主要介绍如何来搭建一个属于自己的静态站。</p>
+<blockquote>
+<p><strong>注：本文是 mac 环境的教程，其他环境可以借鉴，无法照抄</strong></p>
+</blockquote>
+<h1 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h1><p>本篇文章主要分为 <code>hexo</code> 、<code>github</code> 、<code>cloudflare</code> 三个部分，大概的内容就是介绍组件和如何使用，如果按照本文的步骤操作遇到错误时，肯定是环境问题导致的，可以咨询 <code>AI</code> 来解决。</p>
+<p>推荐 <code>AI</code> ：<span style="color:rgba(236, 184, 132, 0.92)"><a target="_blank" rel="noopener" href="https://www.doubao.com/chat/">豆包</a></span> <span style="color:rgba(68, 222, 119, 0.93)"><a target="_blank" rel="noopener" href="https://www.qianwen.com/">千问</a></span></p>
+<hr>
+<p><span style="color:#9370db; font-size:1.2em; font-style:italic;">接下来开始建站旅程吧！</span></p>
+<hr>
+<h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><p>Hexo 是一款快速、简洁且高效的静态博客框架，基于 Node.js 构建，能让你通过 Markdown 轻松编写博客并生成静态网页。</p>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>hexo 依赖Node.js 和 Git 两个工具，需要提前安装：</p>
+<ol>
+<li>安装 Node.js</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 安装</span><br><span class="line">brew install node # 安装 <span class="title class_">Node</span>.<span class="property">js</span></span><br><span class="line">npm install -g npm   # 更新 npm 自身 (<span class="title class_">Node</span>.<span class="property">js</span> 的包管理工具)</span><br><span class="line"></span><br><span class="line"># 安装后验证</span><br><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>安装 Git</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装</span><br><span class="line">brew install git</span><br><span class="line"></span><br><span class="line"># 验证</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>安装 Hexo CLI</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h3 id="本地搭建"><a href="#本地搭建" class="headerlink" title="本地搭建"></a>本地搭建</h3><ol>
+<li>初始化博客项目</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init my-blog # ”my-blog“ 自己的博客目录名称</span><br><span class="line">cd my-blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>生成一篇博客</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">&quot;我的第一篇博客&quot;</span></span><br></pre></td></tr></table></figure>
+<p>文章默认保存在 source&#x2F;_posts&#x2F; 目录下，格式为 Markdown（.md）。</p>
+<ol start="3">
+<li>编辑文章内容</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="attr">title</span>: 我的第一篇博客</span><br><span class="line"><span class="attr">date</span>: <span class="number">2025</span>-<span class="number">11</span>-<span class="number">21</span> <span class="number">11</span>:<span class="number">40</span>:<span class="number">00</span></span><br><span class="line"><span class="attr">tags</span>: [<span class="title class_">Hexo</span>, <span class="title class_">Blog</span>]</span><br><span class="line"><span class="attr">categories</span>: 技术</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">这是我的第一篇 <span class="title class_">Hexo</span> 博客！🎉</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>本地预览</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>然后在浏览器访问：<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a></p>
+<blockquote>
+<p>可加 -d 参数指定端口：hexo server -p 3000</p>
+</blockquote>
+<ol start="5">
+<li>更换主题（可选）</li>
+</ol>
+<p>Hexo 默认主题比较简单，可以更换为其他美观的主题。</p>
+<p>主题列表：<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo主题</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 安装主题</span><br><span class="line"># 在自己选定的主题的 git 中按照教程安装</span><br><span class="line"># 本文以 hexo-theme-<span class="keyword">async</span> 主题作为案例。</span><br><span class="line"># <span class="attr">https</span>:<span class="comment">//github.com/MaLuns/hexo-theme-async</span></span><br><span class="line">cd yourHexoFolder # 确保在你的项目目录</span><br><span class="line">npm install --save hexo-theme-<span class="keyword">async</span> hexo-renderer-less hexo-renderer-ejs</span><br><span class="line"></span><br><span class="line"># 如果需要更新主题</span><br><span class="line">npm install hexo-theme-<span class="keyword">async</span>@latest</span><br></pre></td></tr></table></figure>
+<p>然后修改 <code>_config.yml</code>（站点配置文件）中的 <code>theme</code> 字段：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme</span>: <span class="keyword">async</span></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>美化站点</li>
+</ol>
+<p>按照主题介绍文档进行配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>启动站点，查看是否符合预期</p>
+<h1 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h1><p>GitHub 是全球最大的基于 Git 的代码托管与开发者协作平台，也是活跃的开源社区。<br>本文搭建的站点使用 Github 作为代码托管仓库和构建打包发布平台。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/">Github站点</a></p>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>在 Github 上创建一个仓库，命名格式：<code>&lt;username&gt;.github.io</code></p>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<h3 id="配置-git-信息"><a href="#配置-git-信息" class="headerlink" title="配置 git 信息"></a>配置 git 信息</h3><p>配置 <code>_config.yml</code> 中的 <code>deploy</code> 部分：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy</span>:</span><br><span class="line">  <span class="attr">type</span>: git</span><br><span class="line">  <span class="attr">repo</span>: <span class="attr">https</span>:<span class="comment">//github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span></span><br><span class="line">  <span class="attr">branch</span>: main</span><br></pre></td></tr></table></figure>
+<h3 id="生成静态文件-构建"><a href="#生成静态文件-构建" class="headerlink" title="生成静态文件&amp;构建"></a>生成静态文件&amp;构建</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+<p>这里有可能会 <code>deploy</code> 失败，因为高版本的 <code>git</code> 不支持输入密码。此时需要再 <code>Github</code> 上生成一个可写入的 <code>token</code> 并使用 <code>git</code> 命令指向该仓库。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin <span class="attr">https</span>:<span class="comment">//github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;init&quot;</span></span><br><span class="line">git push origin main</span><br><span class="line"></span><br><span class="line"># 上述命令成功后重新执行构建部署</span><br><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+<h3 id="开启-Github-Pages"><a href="#开启-Github-Pages" class="headerlink" title="开启 Github Pages"></a>开启 Github Pages</h3><p>需要手动开启 GitHub Pages：</p>
+<ol>
+<li>打开 GitHub 仓库 → 点击顶部的 Settings；</li>
+<li>左侧选择 Pages；</li>
+<li>在 Build and deployment 下的 Source 选择 Deploy from a branch；Branch 选择 gh-pages（或你配置的分支），点击 Save；</li>
+<li>等待几分钟后，访问 <code>https://&lt;用户名&gt;.github.io/&lt;仓库名&gt;/</code> 即可。</li>
+</ol>
+<h3 id="配置域名"><a href="#配置域名" class="headerlink" title="配置域名"></a>配置域名</h3><p>Github 提供站点国内访问速度较慢，如果觉得不满意，可以自定义国内域名。（<font color="orange">如何设置就自己百度吧<del>。</del></font>）</p>
+<blockquote>
+<p><strong>基于 <code>Github</code> 搭建的个人站点就成功了，可以尽情访问啦~</strong></p>
+</blockquote>
+<h1 id="Cloudflare"><a href="#Cloudflare" class="headerlink" title="Cloudflare"></a>Cloudflare</h1><p>Cloudflare 是一个负责给网站加速、抵御攻击、流量管理、域名管理和开发支持的平台，在全球都有数据中心，相比于Github，Cloudflare提供的站点访问速度更快，提供的功能更多。</p>
+<p><a target="_blank" rel="noopener" href="https://dash.cloudflare.com/">Cloudflare站点</a></p>
+<h3 id="新建-Pages-项目"><a href="#新建-Pages-项目" class="headerlink" title="新建 Pages 项目"></a>新建 Pages 项目</h3><ol>
+<li>登录 Cloudflare 控制台 → 左侧菜单选择「Workers &amp; Pages」→ 点击「Create a application」；</li>
+<li>选择「Connect to Git」，授权 Cloudflare 访问你的 GitHub 账号（需登录 GitHub 确认授权）；</li>
+<li>选择 Hexo 博客所在的 GitHub 仓库 → 点击「Begin setup」。</li>
+<li>填写构建参数</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Build</span> <span class="title class_">Command</span>：</span><br><span class="line">npm install &amp;&amp; npx hexo clean &amp;&amp; npx hexo generate</span><br><span class="line"></span><br><span class="line"><span class="title class_">Build</span> <span class="attr">output</span>:</span><br><span class="line">public</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>配置完成后，点击「Save and Deploy」，Cloudflare 会自动拉取 GitHub 源码、执行构建命令，并部署到 Pages。</p>
+</blockquote>
+<h3 id="自动构建"><a href="#自动构建" class="headerlink" title="自动构建"></a>自动构建</h3><p>需要本地 <code>Hexo</code> 项目的源码 <code>push</code> 到 <code>Github</code> 上，不能使用 <code>hexo deploy</code> 命令了。</p>
+<p><code>git</code> 指令：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init </span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;init&quot;</span></span><br><span class="line">git push origin main</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>接下来就可以观赏自己的站点了，链接为 &lt;项目名&gt;.pages.dev 。请自己进行尝试吧~</p>
+</blockquote>
+<h3 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h3><p>需要自己购买域名并托管到 <code>Cloudflare</code> 上，进行关联，咨询 <code>AI</code> 即可，比较简答。在本文就不进行介绍了~</p>
+<h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>嘿嘿~，还是比较开心的，毕竟是第二篇自己写的博客，虽然不说写的有多好，但还是耗费了一些心血的。希望可以帮助大家建立起属于自己的博客！</p>
+<p>本文中大多数知识咨询 AI 即可获取，如果没有学习过前端知识的话，大多数困难都集中在主题的配置，尽量阅读介绍文档，里面包含大多数答案。</p>
+<blockquote>
+<p>通过本文，您已掌握 Hexo + GitHub Pages + Cloudflare 的完整搭建链路。关键点总结：</p>
+<ol>
+<li>Hexo 负责内容生成 → GitHub 仓库托管 → Cloudflare 全球加速</li>
+<li>无需服务器，全程免费，访问速度远超 GitHub Pages</li>
+<li>未来更新只需 git push，Cloudflare 自动部署</li>
+</ol>
+</blockquote>
+<div style="background:rgb(245, 247, 250); padding: 10px; border-left: 3px solid rgb(136, 207, 237); border-radius: 4px; font-size: 15px;">
+<span style="font-weight: bold;">本文作者：</span>小东<br>
+<span style="font-weight: bold;">博客链接：</span><a target="_blank" rel="noopener" href="https://blog.xiaodongblog.xyz/" style="color:rgba(204, 0, 160, 0.48); text-decoration: none;">https://blog.xiaodongblog.xyz/</a><br>
+<span style="font-weight: bold;">版权声明：</span>本博客所有文章除特别声明外，均默认采用 <span style="color: rgba(204, 0, 160, 0.48);">CC BY-NC-SA 4.0</span> 许可协议。
+</div>
+
+
+
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/%E7%82%92%E8%82%A1%E5%8E%9F%E5%88%99/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://cdn.jsdelivr.net/gh/IT-NuanxinPro/nuanXinProPic@v1.1.11/preview/desktop/IP%E5%BD%A2%E8%B1%A1/%E7%BA%BF%E6%9D%A1%E5%B0%8F%E7%8B%97/%E5%8A%9E%E5%85%AC%E5%9C%BA%E6%99%AF-%E5%8A%B1%E5%BF%97%E6%96%87%E5%AD%97.webp">
+                </span>
+                <h6 class="trm-op-title">炒股原则</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/12/23</li>
+                <li>10:39</li>
+                <li>经验</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://aisearch.cdn.bcebos.com/pic_create/2025-11-25/14/28ef434150c1cdd7.jpg">
+                </span>
+                <h6 class="trm-op-title">我的第一篇博客</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/11/21</li>
+                <li>11:40</li>
+                <li>感想</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+    <div class="trm-card trm-scroll-animation comment-container">
+    <div id="tcomment"></div>
+</div>
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-footer-card trm-scroll-animation">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2025 - 2026</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">小东</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v8.1.1
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.2.6
+            </span>
+        </div>
+      
+
+    
+        <div class="trm-footer-item blog-run-long"></div>
+     
+
+    
+        <div class="trm-footer-item">
+            白驹过隙，忽然而已。
+        </div>
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="前提"><a rel="nofollow" class="trm-toc-link" href="#前提"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">前提</span></a></li><li class="trm-toc-item trm-toc-level-1" title="Hexo"><a rel="nofollow" class="trm-toc-link" href="#Hexo"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">Hexo</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="环境准备"><a rel="nofollow" class="trm-toc-link" href="#环境准备"><span class="trm-toc-number">2.0.1.</span> <span class="trm-toc-text">环境准备</span></a></li><li class="trm-toc-item trm-toc-level-3" title="本地搭建"><a rel="nofollow" class="trm-toc-link" href="#本地搭建"><span class="trm-toc-number">2.0.2.</span> <span class="trm-toc-text">本地搭建</span></a></li></ol></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="Github"><a rel="nofollow" class="trm-toc-link" href="#Github"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">Github</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="创建仓库"><a rel="nofollow" class="trm-toc-link" href="#创建仓库"><span class="trm-toc-number">3.0.1.</span> <span class="trm-toc-text">创建仓库</span></a></li><li class="trm-toc-item trm-toc-level-3" title="安装插件"><a rel="nofollow" class="trm-toc-link" href="#安装插件"><span class="trm-toc-number">3.0.2.</span> <span class="trm-toc-text">安装插件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="配置 git 信息"><a rel="nofollow" class="trm-toc-link" href="#配置-git-信息"><span class="trm-toc-number">3.0.3.</span> <span class="trm-toc-text">配置 git 信息</span></a></li><li class="trm-toc-item trm-toc-level-3" title="生成静态文件&amp;构建"><a rel="nofollow" class="trm-toc-link" href="#生成静态文件-构建"><span class="trm-toc-number">3.0.4.</span> <span class="trm-toc-text">生成静态文件&amp;构建</span></a></li><li class="trm-toc-item trm-toc-level-3" title="开启 Github Pages"><a rel="nofollow" class="trm-toc-link" href="#开启-Github-Pages"><span class="trm-toc-number">3.0.5.</span> <span class="trm-toc-text">开启 Github Pages</span></a></li><li class="trm-toc-item trm-toc-level-3" title="配置域名"><a rel="nofollow" class="trm-toc-link" href="#配置域名"><span class="trm-toc-number">3.0.6.</span> <span class="trm-toc-text">配置域名</span></a></li></ol></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="Cloudflare"><a rel="nofollow" class="trm-toc-link" href="#Cloudflare"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">Cloudflare</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="新建 Pages 项目"><a rel="nofollow" class="trm-toc-link" href="#新建-Pages-项目"><span class="trm-toc-number">4.0.1.</span> <span class="trm-toc-text">新建 Pages 项目</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自动构建"><a rel="nofollow" class="trm-toc-link" href="#自动构建"><span class="trm-toc-number">4.0.2.</span> <span class="trm-toc-text">自动构建</span></a></li><li class="trm-toc-item trm-toc-level-3" title="自定义域名"><a rel="nofollow" class="trm-toc-link" href="#自定义域名"><span class="trm-toc-number">4.0.3.</span> <span class="trm-toc-text">自定义域名</span></a></li></ol></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="结束语"><a rel="nofollow" class="trm-toc-link" href="#结束语"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">结束语</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <i class="iconfont fas fa-th-list"></i>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.6"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+
+            
+<script src="https://unpkg.com/twikoo@1.6.7/dist/twikoo.all.min.js" data-swup-reload-script data-reset="true"></script>
+
+            <script data-swup-reload-script>
+                twikoo.init({
+                    ...{"enable":true,"envId":"https://twikoo.xiaodongblog.xyz"},
+                    el:'#tcomment'
+                }).then(function () {
+                    let container = document.querySelector('body>.tk-admin-container')
+                    if(container) container.remove()
+                    document.body.append(document.querySelector('.tk-admin-container'))
+                });;
+            </script>
+
+        
+    
+
+		
+			<script src="/js/plugins/danmu.js?v=2.2.6"></script>
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.6"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
